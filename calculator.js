@@ -13,9 +13,15 @@ const multiplyNumbers = function (a, b)
   return a*b;
 }
 
+const dividesNumbers = function (a, b)
+{
+  return a/b;
+}
+
 module.exports =
 {
  sumNumbers,
  takeAwayNumbers,
- multiplyNumbers
+ multiplyNumbers,
+ dividesNumbers
 };

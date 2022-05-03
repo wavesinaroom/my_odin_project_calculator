@@ -13,5 +13,5 @@ describe("Multiply", () =>{
 });
 
 describe("Divide", () =>{
-  test.skip("Divides two integers", () => {expect(dividesNumbers(6,3).toBe(2))});
+  test("Divides two integers", () => {expect(calculator.dividesNumbers(6,3)).toBe(2);});
 });
