@@ -1,0 +1,23 @@
+{
+  "name": "my_odin_project_calculator",
+  "version": "1.0.0",
+  "description": "Don’t forget to commit early & often! You can [reference the Commit Message lesson here!](https://www.theodinproject.com/lessons/foundations-commit-messages)",
+  "main": "test.spec.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wavesinaroom/my_odin_project_calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wavesinaroom/my_odin_project_calculator/issues"
+  },
+  "homepage": "https://github.com/wavesinaroom/my_odin_project_calculator#readme",
+  "devDependencies": {
+    "jest": "^28.0.3"
+  }
+}
