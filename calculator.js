@@ -1,7 +1,8 @@
-const sum = function sum (a, b)
+const sumNumbers = function sum (a, b)
 {
   return a+b;
 }
 
 
-module.exports = sum; 
+
+module.exports = sumNumbers;

@@ -1,4 +1,4 @@
-const sum = require("../calculator.js")
+const sumNumbers = require("../calculator.js")
 
 describe("Operations", () =>{
   test("Sums two integers", () =>{expect(sumNumbers(2,3)).toBe(5);});
