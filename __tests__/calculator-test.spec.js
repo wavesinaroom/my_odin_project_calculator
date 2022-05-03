@@ -9,7 +9,7 @@ describe("Substract", () =>{
 });
 
 describe("Multiply", () =>{
-  test.skip("Multiplies two integers", () =>{expect(multiplyNumbers(2,3).toBe(6))});
+  test("Multiplies two integers", () =>{expect(calculator.multiplyNumbers(2,3)).toBe(6);});
 });
 
 describe("Divide", () =>{
