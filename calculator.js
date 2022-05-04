@@ -33,12 +33,12 @@ const operate= function (a,b,operator)
       result=multiplyNumbers(a,b);
       break;
     case "/":
-      result=multiplyNumbers(a,b);
+      result=dividesNumbers(a,b);
       break;
     default:
       return "Wrong operator input";
   }
-  return result; 
+  return result;
 }
 
 
