@@ -1,4 +1,9 @@
-const sumNumbers = function sum (a, b)
+function typeToDisplay()
+{
+  document.getElementById("screen").innerText = "A";
+}
+
+const sumNumbers = function (a, b)
 {
   return a+b;
 };
@@ -11,12 +16,12 @@ const takeAwayNumbers = function (a,b)
 const multiplyNumbers = function (a, b)
 {
   return a*b;
-}
+};
 
 const dividesNumbers = function (a, b)
 {
   return a/b;
-}
+};
 
 const operate= function (a,b,operator)
 {
@@ -39,14 +44,22 @@ const operate= function (a,b,operator)
       return "Wrong operator input";
   }
   return result;
-}
+};
+
+clearButton = document.getElementsByName("clear");
+clearButton[0].addEventListener("click", typeToDisplay);
 
 
+
+//Tests
+/*
 module.exports =
 {
  sumNumbers,
  takeAwayNumbers,
  multiplyNumbers,
  dividesNumbers,
- operate
+ operate,
+ typeToDisplay
 };
+*/
