@@ -20,23 +20,25 @@ const dividesNumbers = function (a, b)
 
 const operate= function (a,b,operator)
 {
+  let result;
   switch(operator)
   {
     case "+":
-      sumNumbers(a,b);
+      result=sumNumbers(a,b);
       break;
     case "-":
-      takeAwayNumbers(a,b);
+      result=takeAwayNumbers(a,b);
       break;
     case "*":
-      multiplyNumbers(a,b);
+      result=multiplyNumbers(a,b);
       break;
     case "/":
-      multiplyNumbers(a,b);
+      result=multiplyNumbers(a,b);
       break;
     default:
       return "Wrong operator input";
   }
+  return result; 
 }
 
 
