@@ -1,16 +1,15 @@
-//TODO: Wire this function with buttons
-function toText()
+const setUpUI = function(){
+  let screenDisplay = document.getElementById("screen");
+
+  let uiButtons = Array.from(document.getElementsByClassName("UI"));
+  let digitButtons = Array.from(document.getElementsByClassName("digit"));
+  let symbolButtons = Array.from(document.getElementsByClassName("symbol"));
+
+  digitButtons.forEach(button => button.addEventListener("click",function(e)
 {
-  alert("I'm working");
-}
-
-const setUpButtons = function(){
-  uiButtons = Array.from(document.getElementsByClassName("UI"));
-  digitButtons = Array.from(document.getElementsByClassName("digit"));
-  symbolButtons = Array.from(document.getElementsByClassName("symbol"));
-
-  digitButtons.forEach(button => button.addEventListener("click",toText));
-  symbolButtons.forEach(button => button.addEventListener("click",toText));
+  screenDisplay.innerText=(e.srcElement.innerText);
+}));
+  //symbolButtons.forEach(button => button.addEventListener("click",toText));
 }
 
 const sumNumbers = function (a, b)
@@ -57,7 +56,7 @@ const operate= function (a,b,operator)
 };
 
 
-setUpButtons();
+setUpUI();
 
 
 
