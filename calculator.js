@@ -1,6 +1,16 @@
-function typeToDisplay()
+//TODO: Wire this function with buttons
+function toText()
 {
-  document.getElementById("screen").innerText = "A";
+  alert("I'm working");
+}
+
+const setUpButtons = function(){
+  uiButtons = Array.from(document.getElementsByClassName("UI"));
+  digitButtons = Array.from(document.getElementsByClassName("digit"));
+  symbolButtons = Array.from(document.getElementsByClassName("symbol"));
+
+  digitButtons.forEach(button => button.addEventListener("click",toText));
+  symbolButtons.forEach(button => button.addEventListener("click",toText));
 }
 
 const sumNumbers = function (a, b)
@@ -29,30 +39,29 @@ const operate= function (a,b,operator)
   switch(operator)
   {
     case "+":
-      result=sumNumbers(a,b);
-      break;
+    result=sumNumbers(a,b);
+    break;
     case "-":
-      result=takeAwayNumbers(a,b);
-      break;
+    result=takeAwayNumbers(a,b);
+    break;
     case "*":
-      result=multiplyNumbers(a,b);
-      break;
+    result=multiplyNumbers(a,b);
+    break;
     case "/":
-      result=dividesNumbers(a,b);
-      break;
+    result=dividesNumbers(a,b);
+    break;
     default:
-      return "Wrong operator input";
+    return "Wrong operator input";
   }
   return result;
 };
 
-clearButton = document.getElementsByName("clear");
-clearButton[0].addEventListener("click", typeToDisplay);
+
+setUpButtons();
 
 
 
 //Tests
-/*
 module.exports =
 {
  sumNumbers,
@@ -60,6 +69,5 @@ module.exports =
  multiplyNumbers,
  dividesNumbers,
  operate,
- typeToDisplay
+ toText
 };
-*/
