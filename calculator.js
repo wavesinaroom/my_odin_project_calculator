@@ -1,13 +1,20 @@
 const setUpUI = function(){
+
+  const clearButtonPos = 0;
   let screenDisplay = document.getElementById("screen");
 
-  let ouputButtons = Array.from(document.getElementsByClassName("ouput"));
-  let inputButtons = Array.from(document.getElementsByClassName("input"));
+  let outputButtons = Array.from(document.getElementsByClassName("UI"));
+  let inputButtons = Array.from(document.getElementsByClassName("input-key"));
 
-  inputButtons.forEach(button => button.addEventListener("click",function(e)
-  {
-    screenDisplay.innerText=(e.srcElement.innerText);
-  }));
+  outputButtons[clearButtonPos].addEventListener("click", ()=>{
+    screenDisplay.innerText = ' ';
+  });
+
+  inputButtons.forEach(button => button.addEventListener("click",function(e){
+    console.log(e);
+    screenDisplay.innerText=(e.target.innerText);
+    }
+  ));
 }
 
 const sumNumbers = function (a, b)
