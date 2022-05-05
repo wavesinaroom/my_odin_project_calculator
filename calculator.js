@@ -1,15 +1,10 @@
 const setUpUI = function(){
   let screenDisplay = document.getElementById("screen");
 
-  let uiButtons = Array.from(document.getElementsByClassName("UI"));
-  let digitButtons = Array.from(document.getElementsByClassName("digit"));
-  let symbolButtons = Array.from(document.getElementsByClassName("symbol"));
+  let ouputButtons = Array.from(document.getElementsByClassName("ouput"));
+  let inputButtons = Array.from(document.getElementsByClassName("input"));
 
-  digitButtons.forEach(button => button.addEventListener("click",function(e)
-  {
-    screenDisplay.innerText=(e.srcElement.innerText);
-  }));
-  symbolButtons.forEach(button => button.addEventListener("click",function(e)
+  inputButtons.forEach(button => button.addEventListener("click",function(e)
   {
     screenDisplay.innerText=(e.srcElement.innerText);
   }));
