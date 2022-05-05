@@ -6,10 +6,13 @@ const setUpUI = function(){
   let symbolButtons = Array.from(document.getElementsByClassName("symbol"));
 
   digitButtons.forEach(button => button.addEventListener("click",function(e)
-{
-  screenDisplay.innerText=(e.srcElement.innerText);
-}));
-  //symbolButtons.forEach(button => button.addEventListener("click",toText));
+  {
+    screenDisplay.innerText=(e.srcElement.innerText);
+  }));
+  symbolButtons.forEach(button => button.addEventListener("click",function(e)
+  {
+    screenDisplay.innerText=(e.srcElement.innerText);
+  }));
 }
 
 const sumNumbers = function (a, b)
