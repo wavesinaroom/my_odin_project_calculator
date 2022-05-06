@@ -40,8 +40,10 @@ const operate= function (a,b,operator)
 };
 
 const compute = function(calculationInput){
+
   let numbers=[];
   let symbols=[];
+
   //Finds where symbols are
   let symbolPos = [];
   for(let i = 0; i<calculationInput.length; i++)
@@ -69,7 +71,12 @@ const compute = function(calculationInput){
   }
 
   //Computes
-  let result=operate(numbers[0], numbers[1], symbols[0]);
+  console.log(symbols.length);
+  let result = 0;
+  for(let k = 0; k<symbols.length; k+=2){
+    result+=operate(numbers[k], numbers[k+1], symbols[k]);
+  }
+  console.log(result);
   return result;
 }
 

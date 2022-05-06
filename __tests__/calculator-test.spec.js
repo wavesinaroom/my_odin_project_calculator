@@ -2,7 +2,7 @@ const calculator = require("../calculator.js");
 
 describe("Addition", () =>{
   test("Sums two integers", () =>{expect(calculator.compute("2+3")).toBe(5);});
-  test("Sums more than two integers", () =>{expect(calculator.compute("2+3")).toBe(5);});
+  test("Sums even number of integers", () =>{expect(calculator.compute("2+3+5+6")).toBe(16);});
 });
 
 describe("Substraction", () =>{
