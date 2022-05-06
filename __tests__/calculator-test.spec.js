@@ -5,6 +5,7 @@ describe("Addition", () =>{
   test("Sums even number of integers", () =>{expect(calculator.compute("2+3+5+6")).toBe(16);});
   test("Sums odd number of integers", () =>{expect(calculator.compute("2+3+5")).toBe(10);});
   test("Sums large integers", () =>{expect(calculator.compute("25498+135748+543541")).toBe(704787);});
+  test("Sums floats", () =>{expect(calculator.compute("2.52+0.674+12.45+654.5455")).toBe(670.1895);});
 });
 
 describe("Substraction", () =>{

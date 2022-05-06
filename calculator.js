@@ -62,14 +62,15 @@ const compute = function(calculationInput){
   for(let j = 0; j<symbolPos.length; j++)
   {
     endPos = symbolPos[j];
-    numbers.push(parseInt(calculationInput.substring(startPos,endPos)));
+    numbers.push(parseFloat(calculationInput.substring(startPos,endPos)));
     symbols.push(calculationInput.substring(symbolPos[j],symbolPos[j]+1));
     startPos = symbolPos[j]+1;
     if(j===symbolPos.length-1){
-       numbers.push(parseInt(calculationInput.substring(symbolPos[j]+1, calculationInput.length)));
+       numbers.push(parseFloat(calculationInput.substring(symbolPos[j]+1, calculationInput.length)));
     }
   }
 
+  console.log(numbers);
   //Computes
   let result = 0;
   //Computes last two terms
