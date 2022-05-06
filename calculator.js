@@ -1,6 +1,3 @@
-let numbers=[];
-let symbols=[];
-
 const setUpUI = function(){
 
   const clearButtonPos = 0;
@@ -43,6 +40,8 @@ const operate= function (a,b,operator)
 };
 
 const compute = function(calculationInput){
+  let numbers=[];
+  let symbols=[];
   //Finds where symbols are
   let symbolPos = [];
   for(let i = 0; i<calculationInput.length; i++)

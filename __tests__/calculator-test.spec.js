@@ -1,7 +1,12 @@
 const calculator = require("../calculator.js");
 
-describe("Calculate", () =>{
-  test.only("Sums two integers", () =>{expect(calculator.compute("2+3")).toBe(5);});
+describe("Calculate two numbers", () =>{
+  beforeEach(()=>{
+    calculator.numbers = [];
+    calculator.symbols = [];
+  })
+
+  test("Sums two integers", () =>{expect(calculator.compute("2+3")).toBe(5);});
   test("Sums two integers", () =>{expect(calculator.compute("2+2")).toBe(4);});
   test("Takes away one int from the other", () =>{expect(calculator.compute("5-3")).toBe(2);});
   test("Multiplies two integers", () =>{expect(calculator.compute("2*3")).toBe(6);});
