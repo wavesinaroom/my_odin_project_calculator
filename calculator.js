@@ -67,13 +67,9 @@ const compute = function(calculationInput){
        numbers.push(parseInt(calculationInput.substring(symbolPos[j]+1, calculationInput.length)));
     }
   }
-  console.log(symbols);
-  console.log(numbers);
 
   //Computes
   let result=operate(numbers[0], numbers[1], symbols[0]);
-
-  console.log(result);
   return result;
 }
 
