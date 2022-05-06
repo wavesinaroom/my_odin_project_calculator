@@ -71,12 +71,17 @@ const compute = function(calculationInput){
   }
 
   //Computes
-  console.log(symbols.length);
   let result = 0;
+  //Computes last two terms
+  if((numbers.length%2)!=0)
+  {
+    result+=operate(result, numbers[numbers.length-1], symbols[symbols.length-1]);
+  }
+  //Computes pairs of terms
   for(let k = 0; k<symbols.length; k+=2){
     result+=operate(numbers[k], numbers[k+1], symbols[k]);
   }
-  console.log(result);
+
   return result;
 }
 
