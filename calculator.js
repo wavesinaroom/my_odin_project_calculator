@@ -20,8 +20,30 @@ const setUpUI = function(){
   ));
 }
 
-const compute = function(calculationInput){
+const operate= function (a,b,operator)
+{
+  let result;
+  switch(operator)
+  {
+    case "+":
+    result=a+b;
+    break;
+    case "-":
+    result=a-b;
+    break;
+    case "*":
+    result=a*b;
+    break;
+    case "/":
+    result=a/b;
+    break;
+    default:
+    return "Wrong operator input";
+  }
+  return result;
+};
 
+const compute = function(calculationInput){
   //Finds where symbols are
   let symbolPos = [];
   for(let i = 0; i<calculationInput.length; i++)
@@ -48,65 +70,21 @@ const compute = function(calculationInput){
     }
   }
 
-  symbols.forEach(symbol => console.log(symbol));
-  numbers.forEach(number => console.log(number));
+  let result = 0;
+  //Computes
+  for (let k = 0; k < symbols.length; k++) {
+    result+=operate(numbers[k], numbers[k+1], symbols[k]);
+  }
+  return result; 
 }
 
-const sumNumbers = function (a, b)
-{
-  return a+b;
-};
-
-const takeAwayNumbers = function (a,b)
-{
-  return a-b;
-};
-
-const multiplyNumbers = function (a, b)
-{
-  return a*b;
-};
-
-const dividesNumbers = function (a, b)
-{
-  return a/b;
-};
-
-const operate= function (a,b,operator)
-{
-  let result;
-  switch(operator)
-  {
-    case "+":
-    result=sumNumbers(a,b);
-    break;
-    case "-":
-    result=takeAwayNumbers(a,b);
-    break;
-    case "*":
-    result=multiplyNumbers(a,b);
-    break;
-    case "/":
-    result=dividesNumbers(a,b);
-    break;
-    default:
-    return "Wrong operator input";
-  }
-  return result;
-};
 
 
 //setUpUI();
-compute("5+75-654+45");
 
 
 //Tests
 module.exports =
 {
- sumNumbers,
- takeAwayNumbers,
- multiplyNumbers,
- dividesNumbers,
- operate,
- toText
+  compute
 };
