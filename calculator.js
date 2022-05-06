@@ -1,4 +1,3 @@
-let calculationInput='';
 let numbers=[];
 let symbols=[];
 
@@ -69,19 +68,15 @@ const compute = function(calculationInput){
        numbers.push(parseInt(calculationInput.substring(symbolPos[j]+1, calculationInput.length)));
     }
   }
+  console.log(symbols);
+  console.log(numbers);
 
-  let result = 0;
   //Computes
-  for (let k = 0; k < symbols.length; k++) {
-    result+=operate(numbers[k], numbers[k+1], symbols[k]);
-  }
-  return result; 
+  let result=operate(numbers[0], numbers[1], symbols[0]);
+
+  console.log(result);
+  return result;
 }
-
-
-
-//setUpUI();
-
 
 //Tests
 module.exports =
