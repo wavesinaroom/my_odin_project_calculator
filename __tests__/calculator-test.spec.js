@@ -33,5 +33,16 @@ describe("Division", () =>{
 });
 
 describe("Wrong input", () =>{
-  test.skip("Throws error if operant isn't right", () =>{expect(calculator.compute("#")).toBe("Wrong operator input");});
+  test.skip("Throws error if non digit, non character", () =>{expect(calculator.compute("1&54654+87618")).toThrowError("Wrong input");});
+  test.skip("Throws error if more than one sign is added", () =>{expect(calculator.compute("1456+87618**456")).toThrowError("Wrong input");});
+  test.skip("Throws error if it starts with an +,*,/", () =>{expect(calculator.compute("/65435+48674")).toThrowError("Wrong input");});
+  test.skip("Parses negative number at the beginning of the expression", () =>{expect(calculator.compute("-100/2+50")).toBe("That's alright!");});
+  test.skip("Parses negative number at any point of the expression", () =>{expect(calculator.compute("30*-100+50")).toBe("That's alright!");});
+  test.skip("Throws error if it ends with an operator", () =>{expect(calculator.compute("65435+48674-")).toThrowError("Wrong input");});
+});
+
+describe("Mixed operators", () =>{
+  test.skip("Works with positive number", () =>{expect(calculator.compute("100/2+50*2-100")).toBe(100);});
+  test.skip("Works with starting negative number", () =>{expect(calculator.compute("-100/2+75*3")).toBe(75);});
+  test.skip("Works with negative numbers in the middle", () =>{expect(calculator.compute("30*-100+50")).toBe(-250);});
 });
