@@ -26,7 +26,7 @@ describe("Multiplication", () =>{
 
 describe("Division", () =>{
   test("Divides two integers", () => {expect(calculator.compute("6/3")).toBe(2);});
-  test.skip("Divides even number of integers", () => {expect(calculator.compute("8/4/2")).toBe(1);});
+  test("Divides even number of integers", () => {expect(calculator.compute("8/4/2")).toBe(1);});
   test.skip("Divides odd number of integers", () => {expect(calculator.compute("30/2/5/3")).toBe(1);});
   test.skip("Divides large numbers", () => {expect(calculator.compute("144000/1200")).toBe(120);});
   test.skip("Divides floats", () => {expect(calculator.compute("25.42/3.6")).toBe(7.06111 );});
