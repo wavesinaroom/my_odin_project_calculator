@@ -17,7 +17,7 @@ describe("Substraction", () =>{
 });
 
 describe("Multiplication", () =>{
-  test.skip("Multiplies two integers", () =>{expect(calculator.compute("2*3")).toBe(6);});
+  test("Multiplies two integers", () =>{expect(calculator.compute("2*3")).toBe(6);});
   test.skip("Multiplies even number of integers", () =>{expect(calculator.compute("2*3*4*8")).toBe(192);});
   test.skip("Multiplies odd number of integers", () =>{expect(calculator.compute("2*3*5")).toBe(30);});
   test.skip("Multiplies large numbers", () =>{expect(calculator.compute("204*36*456*65")).toBe(217676160);});
