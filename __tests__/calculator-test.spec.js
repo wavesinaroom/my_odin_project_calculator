@@ -10,7 +10,7 @@ describe("Addition", () =>{
 
 describe("Substraction", () =>{
   test("Takes away two integers", () =>{expect(calculator.compute("5-3")).toBe(2);});
-  test.skip("Takes away even number of integers", () =>{expect(calculator.compute("10-3-4-2")).toBe(1);});
+  test("Takes away even number of integers", () =>{expect(calculator.compute("10-3-4-2")).toBe(1);});
   test.skip("Takes away odd number of integers", () =>{expect(calculator.compute("5-3-2")).toBe(0);});
   test.skip("Takes away large integers", () =>{expect(calculator.compute("321564-3541-354-1000")).toBe(316669);});
   test.skip("Takes away floats", () =>{expect(calculator.compute("45.285-20.15-5.54")).toBe(19.595);});
