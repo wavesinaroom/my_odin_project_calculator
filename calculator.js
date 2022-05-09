@@ -72,15 +72,10 @@ const compute = function(calculationInput){
 
   console.log(numbers);
   //Computes
-  let result = 0;
-  //Computes last two terms
-  if((numbers.length%2)!=0)
-  {
-    result+=operate(result, numbers[numbers.length-1], symbols[symbols.length-1]);
-  }
+  let result = numbers[0];
   //Computes pairs of terms
-  for(let k = 0; k<symbols.length; k+=2){
-    result+=operate(numbers[k], numbers[k+1], symbols[k]);
+  for(let k = 1; k<numbers.length; k++){
+    result=operate(result, numbers[k], symbols[k-1]);
   }
 
   return result;
