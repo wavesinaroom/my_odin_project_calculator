@@ -69,15 +69,19 @@ const compute = function(calculationInput){
        numbers.push(parseFloat(calculationInput.substring(symbolPos[j]+1, calculationInput.length)));
     }
   }
-
-  console.log(numbers);
   //Computes
   let result = numbers[0];
+
   //Computes pairs of terms
   for(let k = 1; k<numbers.length; k++){
-    result=operate(result, numbers[k], symbols[k-1]);
+    result= operate(result, numbers[k], symbols[k-1]);
   }
 
+  //Rounds to 5 decimnal places
+  if((result%10)!==0)
+  {
+      result= +result.toFixed(5);
+  }
   return result;
 }
 
