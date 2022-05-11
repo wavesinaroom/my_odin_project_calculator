@@ -5,12 +5,29 @@ describe("Wrong input", () =>{
     function parse(){
       calculator.compute("1&321354+54654");
     }
+    expect(parse).toThrowError("Wrong input");
+  });
 
-    expect(parse).toThrowError("Wrong input");});
+  test.skip("Parses a single positive integer", () =>{expect(calculator.compute("3246")).toBe(3246);});
   test.skip("Parses a single negative integer", () =>{expect(calculator.compute("-3246")).toBe(-3246);});
+
+  test("Throws error if it starts with an +,*,/", () =>{
+    function parse(){
+      calculator.compute("/65435+48674")
+    }
+    expect(parse).toThrowError("Wrong input");
+  });
+
+  test("Throws error if it ends with an +,*,/", () =>{
+    function parse(){
+      calculator.compute("65435+48674-")
+    }
+    expect(parse).toThrowError("Wrong input");
+  });
+
+
+
   test.skip("Throws error if more than one sign is added", () =>{expect(calculator.compute("1456+87618**456")).toThrowError("Wrong input");});
-  test.skip("Throws error if it starts with an +,*,/", () =>{expect(calculator.compute("/65435+48674")).toThrowError("Wrong input");});
-  test.skip("Throws error if it ends with an operator", () =>{expect(calculator.compute("65435+48674-")).toThrowError("Wrong input");});
   test.skip("Parses negative number at the beginning of the expression", () =>{expect(calculator.compute("-100/2+50")).toBe("That's alright!");});
   test.skip("Parses negative number at any point of the expression", () =>{expect(calculator.compute("30*-100+50")).toBe("That's alright!");});
 });

@@ -48,12 +48,24 @@ const compute = function(calculationInput){
   let numberLength = 0;
   let numberRegex = new RegExp(/\d|\-/);
   let signRegex = new RegExp(/\+|\*|\//);
+  let allSignsRegex = new RegExp(/\+|\*|\/|\-/)
+
+  if(allSignsRegex.test(calculationInput[calculationInput.length-1])||allSignsRegex.test(calculationInput[0]))
+  {
+    throw new TypeError("Wrong input");
+  }
 
   for(let i = 0; i<calculationInput.length; i++)
   {
+    //Checks characters match digits or math signs
     if(!signRegex.test(calculationInput[i])&&!numberRegex.test(calculationInput[i]))
     {
       throw new TypeError("Wrong input");
+    }
+
+    if(allSignsRegex.test(calculationInput[i])&&allSignsRegex.test(calculationInput[i+1]))
+    {
+      
     }
   }
 
