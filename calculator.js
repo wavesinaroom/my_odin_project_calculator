@@ -42,39 +42,78 @@ const operate= function (a,b,operator)
 const compute = function(calculationInput){
 
   let numbers=[];
-  let symbols=[];
+  let signs=[];
 
-  //Finds where symbols are
-  let symbolPos = [];
+  //Parses input string
+  let numberLength = 0;
+  let numberRegex = new RegExp(/\d|\-/);
+  let signRegex = new RegExp(/\+|\*|\//);
+
   for(let i = 0; i<calculationInput.length; i++)
   {
-    if(calculationInput[i]==='+'||calculationInput[i]==='-'||calculationInput[i]==='*'||calculationInput[i]==='/')
+    //Parse consecutive negative number and negative sign separately
+    if(calculationInput[i]==="-"&&calculationInput[i+1]==="-")
     {
-      symbolPos.push(i);
+      if(calculationInput[i]!==0||calculationInput[i]!==calculationInput.length-1)
+      {
+        signs.push(calculationInput[i]);
+        continue;
+      }else{
+        console.log("at: "+i);
+        throw "Wrong input";
+      }
+    }//If i is a number or (-) sign
+    else if(numberRegex.test(calculationInput[i]))
+    {
+      numberLength++;
+    }//If i is a math sign
+    else if(signRegex.test(calculationInput[i]))
+    {
+      //Parses number when sign is found
+      if(i!==0||i!==calculationInput.length-1)
+      {
+        if(i-numberLength-1=="-")
+        {
+          numbers.push(parseFloat(calculationInput.substring(i-numberLength, i-1))*-1);
+        }else
+        {
+          numbers.push(parseFloat(calculationInput.substring(i-numberLength-1, i-1)));
+          numberLength = 0;
+        }
+      }
+      //Throws error if expression starts with sign
+      //Throws error if expression ends with sign
+      if(i===0||i===calculationInput.length-1)
+      {
+        console.log("at: "+i);
+        throw "Wrong input";
+      }//Throws error if two signs in a row
+      else if(signRegex.test(calculationInput[i+1]))
+      {
+        console.log("at: "+i);
+        throw "Wrong input";
+      }else
+      {
+        signs.push(calculationInput[i]);
+      }
+    }//Throws error if expression is not a sign or a number
+    else
+    {
+      console.log("at: "+i);
+      throw "Wrong input";
     }
   }
 
-  //Slice string to numbers array
-  let startPos=0;
-  let endPos=0;
+  console.log(numbers);
+  console.log(signs);
 
-  //Numbers
-  for(let j = 0; j<symbolPos.length; j++)
-  {
-    endPos = symbolPos[j];
-    numbers.push(parseFloat(calculationInput.substring(startPos,endPos)));
-    symbols.push(calculationInput.substring(symbolPos[j],symbolPos[j]+1));
-    startPos = symbolPos[j]+1;
-    if(j===symbolPos.length-1){
-       numbers.push(parseFloat(calculationInput.substring(symbolPos[j]+1, calculationInput.length)));
-    }
-  }
+
   //Computes
   let result = numbers[0];
 
   //Computes pairs of terms
-  for(let k = 1; k<numbers.length; k++){
-    result= operate(result, numbers[k], symbols[k-1]);
+  for(let j = 1; j<numbers.length; j++){
+    result= operate(result, numbers[j], symbols[j-1]);
   }
 
   //Rounds to 5 decimnal places
@@ -84,6 +123,8 @@ const compute = function(calculationInput){
   }
   return result;
 }
+
+compute("30*-100+50");
 
 //Tests
 module.exports =
