@@ -47,7 +47,7 @@ const compute = function(calculationInput){
   //Parses input string
   let numberLength = 0;
   let numberRegex = new RegExp(/\d|\-/);
-  let signRegex = new RegExp(/\+|\*|\//);
+  let nonNegativeSignRegex = new RegExp(/\+|\*|\//);
   let allSignsRegex = new RegExp(/\+|\*|\/|\-/)
 
   if(allSignsRegex.test(calculationInput[calculationInput.length-1])||allSignsRegex.test(calculationInput[0]))
@@ -58,14 +58,15 @@ const compute = function(calculationInput){
   for(let i = 0; i<calculationInput.length; i++)
   {
     //Checks characters match digits or math signs
-    if(!signRegex.test(calculationInput[i])&&!numberRegex.test(calculationInput[i]))
+    if(!nonNegativeSignRegex.test(calculationInput[i])&&!numberRegex.test(calculationInput[i]))
     {
       throw new TypeError("Wrong input");
     }
 
-    if(allSignsRegex.test(calculationInput[i])&&allSignsRegex.test(calculationInput[i+1]))
+    //Checks if there are to no negative consecutive signs
+    if(nonNegativeSignRegex.test(calculationInput[i])&&nonNegativeSignRegex.test(calculationInput[i+1])&&calculationInput[i]===calculationInput[i+1])
     {
-      
+      throw new TypeError("Wrong input");
     }
   }
 
