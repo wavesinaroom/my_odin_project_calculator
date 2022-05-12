@@ -8,8 +8,8 @@ describe("Wrong input", () =>{
     expect(parse).toThrowError("Wrong input");
   });
 
-  test.skip("Parses a single positive integer", () =>{expect(calculator.compute("3246")).toBe(3246);});
-  test.skip("Parses a single negative integer", () =>{expect(calculator.compute("-3246")).toBe(-3246);});
+  test("Parses a single positive integer", () =>{expect(calculator.compute("3246")).toBe(3246);});
+  test("Parses a single negative integer", () =>{expect(calculator.compute("-3246")).toBe(-3246);});
 
   test("Throws error if it starts with an +,*,/", () =>{
     function parse(){
