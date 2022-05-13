@@ -55,7 +55,7 @@ const compute = function(calculationInput){
     throw new TypeError("Wrong input");
   }
 
-  for(let i = 0; i<calculationInput.length; i++)
+  for(let i = calculationInput.length-1; i>=0; i--)
   {
     //Checks characters match digits or math signs
     if(!allSignsRegex.test(calculationInput[i])&&!numberRegex.test(calculationInput[i]))
@@ -63,8 +63,8 @@ const compute = function(calculationInput){
       throw new TypeError("Wrong input");
     }
 
-    //Checks if there are to no negative consecutive signs
-    if(nonNegativeSignRegex.test(calculationInput[i])&&nonNegativeSignRegex.test(calculationInput[i+1])&&calculationInput[i]===calculationInput[i+1])
+    //Checks if there are two no negative consecutive signs
+    if(nonNegativeSignRegex.test(calculationInput[i])&&nonNegativeSignRegex.test(calculationInput[i-1])&&calculationInput[i]===calculationInput[i-1])
     {
       throw new TypeError("Wrong input");
     }
@@ -73,14 +73,34 @@ const compute = function(calculationInput){
     if(numberRegex.test(calculationInput[i]))
     {
       numberLength++;
+      if(i===0)
+      {
+        numbers.push(parseFloat(calculationInput.substring((i),(i+numberLength))));
+      }else if(i===1&&calculationInput[0]==="-")
+      {
+        numbers.push(parseFloat(calculationInput.substring((i),(i+numberLength)))*-1);
+      }
     }
-  }
-  if(calculationInput[0]==="-")
-  {
-    numbers.push(parseFloat(calculationInput.substring(1,calculationInput[numberLength]))*-1);
-  }else
-  {
-    numbers.push(parseFloat(calculationInput.substring(0,calculationInput[numberLength])));
+    else
+    {
+      //Parses math sign
+      if(nonNegativeSignRegex.test(calculationInput[i]))
+      {
+        signs.push(calculationInput[i]);
+        numbers.push(parseFloat(calculationInput.substring((i+1),(i+1+numberLength))));
+        numberLength = 0;
+      }
+      //Parses negative number after non minus math sign
+      if(calculationInput[i]==="-"&&nonNegativeSignRegex.test(calculationInput[i-1]))
+      {
+        numbers.push(parseFloat(calculationInput.substring((i+1),(i+1+numberLength))*-1));
+      }//Parses second minus sign in row as sign
+      else if(calculationInput[i]==="-"&&calculationInput[i+1]==="-")
+      {
+        signs.push(calculationInput[i]);
+        numbers.push(parseFloat(calculationInput.substring((i+2),(i+2+numberLength))*-1));
+      }
+    }
   }
   //console.log(numbers);
   //console.log(signs);
