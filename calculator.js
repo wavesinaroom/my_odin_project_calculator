@@ -94,28 +94,29 @@ const compute = function(calculationInput){
       if(calculationInput[i]==="-"&&nonNegativeSignRegex.test(calculationInput[i-1]))
       {
         numbers.push(parseFloat(calculationInput.substring((i+1),(i+1+numberLength))*-1));
+        numberLength = 0;
       }//Parses second minus sign in row as sign
       else if(calculationInput[i]==="-"&&calculationInput[i+1]==="-")
       {
         signs.push(calculationInput[i]);
         numbers.push(parseFloat(calculationInput.substring((i+2),(i+2+numberLength))*-1));
+        numberLength = 0;
       }
     }
   }
-  //console.log(numbers);
-  //console.log(signs);
 
-  //Computes
+  //COMPUTES
+  numbers.reverse();
+  signs.reverse();
   let result = numbers[0];
-  console.log(result);
-
-  /*
+  console.log(numbers);
+  console.log(signs);
   //Computes pairs of terms
   for(let j = 1; j<numbers.length; j++){
-    result= operate(result, numbers[j], symbols[j-1]);
+    result= operate(result, numbers[j], signs[j-1]);
   }
 
-  */
+
   //Rounds to 5 decimnal places
   if((result%10)!==0)
   {
