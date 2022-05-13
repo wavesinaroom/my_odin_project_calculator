@@ -88,6 +88,7 @@ const compute = function(calculationInput){
       {
         signs.push(calculationInput[i]);
         numbers.push(parseFloat(calculationInput.substring((i+1),(i+1+numberLength))));
+        console.log(calculationInput.substring((i+1),(i+1+numberLength)));
         numberLength = 0;
       }
       //Parses negative number after non minus math sign
