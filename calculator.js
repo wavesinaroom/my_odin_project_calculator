@@ -1,17 +1,38 @@
 const setUpUI = function(){
 
+  let calculation='';
+
+  //Non arithmetic buttons
+  let outputButtons = Array.from(document.getElementsByClassName("UI"));
+
   const clearButtonPos = 0;
+  const resultButtonPos = 1;
+  const backspaceButtonPos = 2;
+
+  //screenDisplay
   let screenDisplay = document.getElementById("screen");
 
-  let outputButtons = Array.from(document.getElementsByClassName("UI"));
+  //Input buttons
   let inputButtons = Array.from(document.getElementsByClassName("input-key"));
 
+  //Events
   outputButtons[clearButtonPos].addEventListener("click", ()=>{
-    screenDisplay.innerText = ' ';
+    calculation = '';
+    screenDisplay.innerText = calculation;
+  });
+
+  outputButtons[resultButtonPos].addEventListener("click", ()=>{
+    screenDisplay.innerText = compute(calculation);
+  });
+
+  outputButtons[backspaceButtonPos].addEventListener("click", ()=>{
+    calculation = calculation.substring(0, calculation.length-1); 
+    screenDisplay.innerText = calculation;
   });
 
   inputButtons.forEach(button => button.addEventListener("click",function(e){
     calculation+=(e.target.innerText);
+    screenDisplay.innerText = calculation;
     }
   ));
 }
@@ -34,7 +55,7 @@ const operate= function (a,b,operator)
     result=a/b;
     break;
     default:
-    return "Wrong operator input";
+    throw new TypeError("Wrong input");
   }
   return result;
 };
@@ -138,9 +159,12 @@ const compute = function(calculationInput){
   return result;
 }
 
+setUpUI();
 
 //Tests
+/*
 module.exports =
 {
   compute
 };
+*/
