@@ -1,6 +1,6 @@
 const setUpUI = function(){
 
-  let calculation='';
+  let calculation='0';
 
   //Non arithmetic buttons
   let outputButtons = Array.from(document.getElementsByClassName("UI"));
@@ -11,20 +11,20 @@ const setUpUI = function(){
 
   //screenDisplay
   let screenDisplay = document.getElementById("screen");
+  screenDisplay.innerText = calculation;
 
   //Input buttons
   let inputButtons = Array.from(document.getElementsByClassName("input-key"));
 
   //Events
   outputButtons[clearButtonPos].addEventListener("click", ()=>{
-    calculation = '';
+    calculation = '0';
     screenDisplay.innerText = calculation;
   });
 
   outputButtons[resultButtonPos].addEventListener("click", ()=>{
     calculation = compute(calculation);
     screenDisplay.innerText = calculation;
-
     //Optional - lets user modify the expression
     //screenDisplay.innerText = compute(calculation);
   });
