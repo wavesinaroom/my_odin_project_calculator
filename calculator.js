@@ -22,11 +22,15 @@ const setUpUI = function(){
   });
 
   outputButtons[resultButtonPos].addEventListener("click", ()=>{
-    screenDisplay.innerText = compute(calculation);
+    calculation = compute(calculation);
+    screenDisplay.innerText = calculation;
+
+    //Optional - lets user modify the expression
+    //screenDisplay.innerText = compute(calculation);
   });
 
   outputButtons[backspaceButtonPos].addEventListener("click", ()=>{
-    calculation = calculation.substring(0, calculation.length-1); 
+    calculation = calculation.substring(0, calculation.length-1);
     screenDisplay.innerText = calculation;
   });
 
