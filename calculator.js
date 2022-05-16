@@ -16,29 +16,51 @@ const setUpUI = function(){
   //Input buttons
   let inputButtons = Array.from(document.getElementsByClassName("input-key"));
 
+  //Checks if there's already a floating point
+  let isFloatingDot = false;
+  let allSignsRegex = new RegExp(/\+|\*|\/|\-/)
   //Events
   outputButtons[clearButtonPos].addEventListener("click", ()=>{
     calculation = '';
     screenDisplay.innerText = '0';
+    isFloatingDot=false;
   });
 
   outputButtons[resultButtonPos].addEventListener("click", ()=>{
     calculation = compute(calculation);
     screenDisplay.innerText = calculation;
+    isFloatingDot=false;
     //Optional - lets user modify the expression
     //screenDisplay.innerText = compute(calculation);
   });
 
   outputButtons[backspaceButtonPos].addEventListener("click", ()=>{
+    if(calculation.length-1==='.')
+    {
+      isFloatingDot=false;
+    }
     calculation = calculation.substring(0, calculation.length-1);
     screenDisplay.innerText = calculation;
   });
 
   inputButtons.forEach(button => button.addEventListener("click",function(e){
-    calculation+=(e.target.innerText);
-    screenDisplay.innerText = calculation;
+    if(!isFloatingDot&&e.target.innerText==='.')
+    {
+      calculation+=(e.target.innerText);
+      screenDisplay.innerText = calculation;
+      isFloatingDot=true;
+    }else if(isFloatingDot&&e.target.innerText==='.')
+    {
+      return;
+    }else{
+      calculation+=(e.target.innerText);
+      screenDisplay.innerText = calculation;
+      if(allSignsRegex.test(e.target.innerText))
+      {
+        isFloatingDot=false;
+      }
     }
-  ));
+  }));
 }
 
 const operate= function (a,b,operator)
@@ -70,7 +92,7 @@ const parseString= function(calculationInput, numbers, signs)
   let numberLength = 0;
   let numberRegex = new RegExp(/\d/);
   let nonNegativeSignRegex = new RegExp(/\+|\*|\//);
-    let allSignsRegex = new RegExp(/\+|\*|\/|\-/)
+  let allSignsRegex = new RegExp(/\+|\*|\/|\-/)
 
     if(allSignsRegex.test(calculationInput[calculationInput.length-1])||nonNegativeSignRegex.test(calculationInput[0]))
     {
@@ -94,20 +116,22 @@ const parseString= function(calculationInput, numbers, signs)
       //measures number length
       if(numberRegex.test(calculationInput[i])||calculationInput[i]===".")
       {
-        numberLength++;
-        if(i===0)
-        {
-          numbers.push(parseFloat(calculationInput.substring((i),(i+numberLength))));
-        }else if(i===1&&calculationInput[0]==="-")
-        {
-          numbers.push(parseFloat(calculationInput.substring((i),(i+numberLength)))*-1);
-        }
+          numberLength++;
+          if(i===0)
+          {
+            numbers.push(parseFloat(calculationInput.substring((i),(i+numberLength))));
+          }else if(i===1&&calculationInput[0]==="-")
+          {
+            numbers.push(parseFloat(calculationInput.substring((i),(i+numberLength)))*-1);
+          }
+          isFloatingDot = true;
       }
       else
       {
         //Parses math sign
         if(nonNegativeSignRegex.test(calculationInput[i]))
         {
+          isFloatingDot = false;
           signs.push(calculationInput[i]);
           if(numberLength!=0)
           {
