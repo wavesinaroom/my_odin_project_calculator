@@ -58,7 +58,7 @@ const compute = function(calculationInput){
   for(let i = calculationInput.length-1; i>=0; i--)
   {
     //Checks characters match digits or math signs
-    if(!allSignsRegex.test(calculationInput[i])&&!numberRegex.test(calculationInput[i]))
+    if(!allSignsRegex.test(calculationInput[i])&&!numberRegex.test(calculationInput[i])&&calculationInput[i]!==".")
     {
       throw new TypeError("Wrong input");
     }
@@ -70,7 +70,7 @@ const compute = function(calculationInput){
     }
 
     //measures number length
-    if(numberRegex.test(calculationInput[i]))
+    if(numberRegex.test(calculationInput[i])||calculationInput[i]===".")
     {
       numberLength++;
       if(i===0)
@@ -124,19 +124,15 @@ const compute = function(calculationInput){
   console.log(numbers);
   console.log(signs);
 
-  //Computes pairs of terms
   for(let j = 1; j<numbers.length; j++){
     result = operate(result, numbers[j], signs[j-1]);
-    console.log(result);
   }
-
 
   //Rounds to 5 decimnal places
   if((result%10)!==0)
   {
       result= +result.toFixed(5);
   }
-
   return result;
 }
 
