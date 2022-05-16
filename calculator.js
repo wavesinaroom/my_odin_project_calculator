@@ -87,9 +87,11 @@ const compute = function(calculationInput){
       if(nonNegativeSignRegex.test(calculationInput[i]))
       {
         signs.push(calculationInput[i]);
-        numbers.push(parseFloat(calculationInput.substring((i+1),(i+1+numberLength))));
-        console.log(calculationInput.substring((i+1),(i+1+numberLength)));
-        numberLength = 0;
+        if(numberLength!=0)
+        {
+          numbers.push(parseFloat(calculationInput.substring((i+1),(i+1+numberLength))));
+          numberLength = 0;
+        }
       }
       //Parses negative number after non minus math sign
       if(calculationInput[i]==="-"&&nonNegativeSignRegex.test(calculationInput[i-1]))
@@ -112,6 +114,8 @@ const compute = function(calculationInput){
   let result = numbers[0];
   console.log(numbers);
   console.log(signs);
+
+  console.log(operate(numbers[0],numbers[1],"*"));
   //Computes pairs of terms
   for(let j = 1; j<numbers.length; j++){
     result= operate(result, numbers[j], signs[j-1]);

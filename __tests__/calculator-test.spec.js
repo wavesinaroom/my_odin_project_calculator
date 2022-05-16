@@ -33,7 +33,7 @@ describe("Wrong input", () =>{
   });
 
   test("Parses negative number at the beginning of the expression", () =>{expect(calculator.compute("-100/2+50")).toBe(0);});
-  test("Parses negative number at any point of the expression", () =>{expect(calculator.compute("30*-100+50")).toBe(-250);});
+  test("Parses negative number at any point of the expression", () =>{expect(calculator.compute("30*-100+50")).toBe(-2950);});
 });
 
 describe("Addition", () =>{
