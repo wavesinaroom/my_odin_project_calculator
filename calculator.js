@@ -104,6 +104,15 @@ const compute = function(calculationInput){
         signs.push(calculationInput[i]);
         numbers.push(parseFloat(calculationInput.substring((i+2),(i+2+numberLength))*-1));
         numberLength = 0;
+      }//Parses single minus sign as sign
+      else if(calculationInput[i]==="-"&&numberRegex.test(calculationInput[i-1]))
+      {
+        signs.push(calculationInput[i]);
+        if(numberLength!=0)
+        {
+          numbers.push(parseFloat(calculationInput.substring((i+1),(i+1+numberLength))));
+          numberLength = 0;
+        }
       }
     }
   }
@@ -115,10 +124,10 @@ const compute = function(calculationInput){
   console.log(numbers);
   console.log(signs);
 
-  console.log(operate(numbers[0],numbers[1],"*"));
   //Computes pairs of terms
   for(let j = 1; j<numbers.length; j++){
-    result= operate(result, numbers[j], signs[j-1]);
+    result = operate(result, numbers[j], signs[j-1]);
+    console.log(result);
   }
 
 

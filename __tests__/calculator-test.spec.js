@@ -72,5 +72,4 @@ describe("Division", () =>{
 describe("Mixed operators", () =>{
   test("Works with positive number", () =>{expect(calculator.compute("100/2+50*2-100")).toBe(100);});
   test("Works with starting negative number", () =>{expect(calculator.compute("-100/2+75*3")).toBe(75);});
-  test("Works with negative numbers in the middle", () =>{expect(calculator.compute("30*-100+50")).toBe(-250);});
 });
