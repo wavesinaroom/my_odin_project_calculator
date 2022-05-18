@@ -54,13 +54,13 @@ button{
   color: #36395A;
   cursor: pointer;
   display: inline-flex;
-  height: 48px;
+  height: 80px;
   justify-content: center;
   line-height: 1;
   list-style: none;
   overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
   position: relative;
   text-align: left;
   text-decoration: none;
