@@ -119,3 +119,9 @@ button:active {
   font-size: 40px;
   justify-content: flex-end;
 }
+
+#zero, #output-result
+{
+  padding-left: 77px;
+  text-align: center;
+}
