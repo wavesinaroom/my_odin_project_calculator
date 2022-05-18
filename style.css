@@ -36,14 +36,14 @@ h1{
   top: 25%;
   margin-left:-450px;
   margin-top: -250px;
+  color: white;
+  font-weight: bold;
 }
 
 button{
   background-color: transparent;
   border-color: white;
   font-weight: bold;
-
-
   align-items: center;
   appearance: none;
   background-color: #FCFCFD;
