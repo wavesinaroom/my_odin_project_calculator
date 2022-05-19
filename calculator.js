@@ -5,9 +5,9 @@ const setUpUI = function(){
   //Non arithmetic buttons
   let outputButtons = Array.from(document.getElementsByClassName("UI"));
 
-  const clearButtonPos = 0;
-  const resultButtonPos = 1;
-  const backspaceButtonPos = 2;
+  const resultButtonPos = 0;
+  const backspaceButtonPos = 1;
+  const clearButtonPos = 2;
 
   //screenDisplay
   let screenDisplay = document.getElementById("screen");
@@ -40,6 +40,10 @@ const setUpUI = function(){
       isFloatingDot=false;
     }
     calculation = calculation.substring(0, calculation.length-1);
+    if(calculation.length===0)
+    {
+      calculation=0;
+    }
     screenDisplay.innerText = calculation;
   });
 
