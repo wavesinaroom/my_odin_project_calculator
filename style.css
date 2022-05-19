@@ -13,31 +13,33 @@ html{
 }
 
 .calculator{
-  width:500px;
-  height:500px;
-  margin:0 auto;
-  position:absolute;
-  left:50%;
-  top:50%;
-  margin-left:-250px;
-  margin-top:-450px;
+  align-content: center;
   display: flex;
   flex-direction: column;
-  align-content: center;
   font-size: 20px;
+  height:500px;
+  left:50%;
+  margin:0 auto;
+  margin-left:-250px;
+  margin-top:-450px;
+  position:absolute;
+  top:50%;
+  width:500px;
 }
 
 h1{
-  width:500px;
-  height:500px;
-  margin:0 auto;
-  position:absolute;
-  left:70%;
-  top: 25%;
-  margin-left:-450px;
-  margin-top: -250px;
   color: white;
-  font-weight: bold;
+  font-size: 50px;
+  font-weight:normal;
+  height:500px;
+  left:70%;
+  margin:0 auto;
+  margin-left:-550px;
+  margin-top: -250px;
+  position:absolute;
+  text-shadow: 3px 3px 7px white;
+  top: 25%;
+  width:700px;
 }
 
 button{
@@ -51,6 +53,7 @@ button{
   color: #36395A;
   cursor: pointer;
   display: inline-flex;
+  font-size: 18px;
   font-weight: bold;
   height: 80px;
   justify-content: center;
@@ -65,11 +68,9 @@ button{
   text-decoration: none;
   transition: box-shadow .15s,transform .15s;
   user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
   will-change: box-shadow,transform;
-  font-size: 18px;
 }
 
 button:focus {
@@ -87,37 +88,25 @@ button:active {
 }
 
 
-.fourth-row{
+.fourth-row,
+.third-row,
+.second-row,
+.first-row,
+.output{
   display: flex;
   justify-content:flex-end;
 }
 
-.third-row{
-  display: flex;
-  justify-content: flex-end;
-}
-
-.second-row{
-  display: flex;
-  justify-content: flex-end;
-}
-
-.first-row{
-  display: flex;
-  justify-content: flex-end;
-}
-
-.output{
-  display: flex;
-  justify-content: flex-end;
-}
 
 .display{
-  width: 300px;
-  margin-left: 194px;
+  color: white;
   display: flex;
   font-size: 40px;
+  font-weight: normal;
   justify-content: flex-end;
+  margin-left: 194px;
+  text-shadow: 1px 1px 3px white;
+  width: 300px;
 }
 
 #zero, #output-result
